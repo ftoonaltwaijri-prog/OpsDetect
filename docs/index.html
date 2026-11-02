@@ -11,8 +11,34 @@
 <article class="card"><div class="eyebrow">Data analytics · Dashboard</div><h3>Retail Sales & Customer Insights</h3><p>An interactive retail analytics dashboard exploring revenue, profit, products, customer ratings and regions.</p><div class="links"><a href="https://ftoonaltwaijri-prog.github.io/retail-sales-analytics-dashboard/" target="_blank" rel="noopener">Live demo ↗</a></div></article>
 <article class="card"><div class="eyebrow">Power BI · Retail</div><h3>E-commerce Retail Sales Dashboard</h3><p>A sales analytics portfolio project focused on retail performance reporting and visualization.</p><a href="https://github.com/ftoonaltwaijri-prog/ecommerce-retail-sales-dashboard" target="_blank" rel="noopener">View repository ↗</a></article>
 <article class="card"><div class="eyebrow">Academic projects</div><h3>Software & Systems</h3><p>Additional academic work includes a Riyadh Metro Management System, data-structure implementations, and a UDP file-transfer project.</p></article>
-</div></section>
+</div>
+<h3 style="margin-top:32px">More projects from GitHub</h3>
+<p>New public repositories appear here automatically when you publish them on GitHub.</p>
+<div id="github-projects" class="grid" aria-live="polite"><p>Loading GitHub projects…</p></div>
+</section>
 <section id="skills"><h2>Technical skills</h2><div class="tags"><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Power BI</span><span class="tag">Microsoft Excel</span><span class="tag">Java</span><span class="tag">Flask</span><span class="tag">Data Analysis</span><span class="tag">Data Visualization</span><span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">MySQL</span><span class="tag">GitHub</span><span class="tag">Cisco Packet Tracer</span></div></section>
 <section><h2>Learning & recognition</h2><div class="grid"><div class="card"><h3>Beyond AI Program</h3><p>First Place · Oracle & Center for Innovation · 2025</p></div><div class="card"><h3>Girls in ICT</h3><p>Recognition · Ministry of Communications and Information Technology · 2025</p></div><div class="card"><h3>Professional development</h3><p>Learning across SQL, Power BI, Python, Excel analytics, business analysis and data exploration.</p></div></div></section>
 <section id="contact"><h2>Connect</h2><p>Interested in data, BI, and technology opportunities in Riyadh.</p><div class="buttons"><a class="btn" href="https://github.com/ftoonaltwaijri-prog" target="_blank" rel="noopener">GitHub</a></div></section>
-</main><footer>© 2026 Ftoon Najm AlTwaijri · Built with HTML & CSS</footer></body></html>
+</main><footer>© 2026 Ftoon Najm AlTwaijri · Built with HTML & CSS</footer><script>
+(function(){
+  const target=document.getElementById('github-projects');
+  const owner='ftoonaltwaijri-prog';
+  const featured=new Set(['opsdetect','enterpriseiq','retail-sales-analytics-dashboard','ecommerce-retail-sales-dashboard']);
+  const escapeHTML=(value)=>String(value).replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+  fetch('https://api.github.com/users/'+owner+'/repos?per_page=100&sort=created&direction=desc',{headers:{'Accept':'application/vnd.github+json'}})
+    .then(response=>{if(!response.ok)throw new Error('GitHub API unavailable');return response.json();})
+    .then(repos=>{
+      const others=repos.filter(r=>!r.private&&!r.fork&&!r.archived&&!featured.has(r.name.toLowerCase())&&!r.name.toLowerCase().endsWith('.github.io')).sort((a,b)=>new Date(b.created_at)-new Date(a.created_at));
+      if(!others.length){target.innerHTML='<p>No additional public projects yet.</p>';return;}
+      target.innerHTML=others.map(r=>{
+        const name=escapeHTML(r.name);
+        const description=escapeHTML(r.description||'Explore this project on GitHub.');
+        const language=r.language?escapeHTML(r.language):'GitHub project';
+        const url=escapeHTML(r.html_url);
+        const demo=r.homepage&&/^https:\/\//i.test(r.homepage)?'<a href="'+escapeHTML(r.homepage)+'" target="_blank" rel="noopener noreferrer">Live demo ↗</a>':'';
+        return '<article class="card"><div class="eyebrow">'+language+'</div><h3>'+name+'</h3><p>'+description+'</p><div class="links"><a href="'+url+'" target="_blank" rel="noopener noreferrer">View repository ↗</a>'+demo+'</div></article>';
+      }).join('');
+    })
+    .catch(()=>{target.innerHTML='<p>GitHub projects could not load right now. <a href="https://github.com/'+owner+'" target="_blank" rel="noopener noreferrer">See all repositories on GitHub ↗</a></p>';});
+})();
+</script></body></html>
