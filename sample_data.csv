@@ -1,0 +1,6 @@
+id,type,vendor,amount,date,reference,status,due_date
+1,Invoice,Vendor A,100,2026-01-01,INV-01,Paid,
+2,Invoice,Vendor A,100,2026-01-02,INV-01,Paid,
+3,Invoice,Vendor B,900,2026-01-03,INV-03,Pending,
+4,PO,Vendor C,75,2026-01-04,PO-04,Open,2026-01-20
+5,Invoice,,40,2026-01-05,INV-05,Pending,
